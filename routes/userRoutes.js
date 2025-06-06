@@ -4,10 +4,10 @@ const { auth } = require('../middleware/auth');
 
 const router = Router()
 
-router.post("/", auth, createUser);
-router.post("/login", auth, loginUser);
-router.get("/", auth, getUser);
-router.get("/logout", auth, logoutUser);
+router.post("/", createUser);
+router.post("/login", loginUser);
+router.get("/",auth,  getUser);
+router.get("/logout", logoutUser);
 router.get("/:id", auth, singleUserUser);
 router.put("/:id", auth, updateUser);
 router.delete('/:id', auth, deleteUser)
