@@ -112,12 +112,10 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-
 const logoutUser = async (req, res, next) => {
   res.cookie("jwt", " ", { expiresIn: "-1" });
   return res.json({ message: "logout user" });
 };  
-
 
 module.exports = {
   createUser,

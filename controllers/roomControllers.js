@@ -12,6 +12,7 @@ const getRooms = async (req, res) => {
 };
 
 const createRoom = async (req, res, next) => {
+  console.log("ROOM DATA:", req.body);
   try {
     console.log("Request Body:", req.body);
     const newRoom = new Room(req.body);
@@ -59,18 +60,25 @@ const updateRoom = async (req, res, next) => {
 };
 
 const deletRooms = async (req, res) => {
-  const deletRoom = await Room.findByIdAndDelete(req.params.id)
-  if (!deletRoom) {
-    res.status(400);
-    throw new Error("Room are not delete");
+  try {
+    const deletRoom = await Room.findByIdAndDelete(req.params.id);
+    if (!deletRoom) {
+      return res.status(404).json({ message: "Room not found" });
+    }
+    res.status(200).json({
+      success: true,
+      message: "Room deleted successfully",
+      id: req.params.id,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
-  res.status(201).json(deletRoom);
 };
-
 module.exports = {
   getRooms,
   createRoom,
   singleRoom,
   updateRoom,
-  deletRooms
+  deletRooms,
 };
