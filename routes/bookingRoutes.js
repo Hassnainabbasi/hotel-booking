@@ -4,9 +4,9 @@ const { auth } = require('../middleware/auth');
 
 const router = Router()
 
-router.post("/", auth, createBooking);
-router.get("/", auth, getBooking);
-router.get("/:id",auth, singleUserBooking);
+router.post("/", createBooking);
+router.get("/", getBooking);
+router.get("/:id",singleUserBooking);
 router.put("/:id",auth, updateBooking);
 router.delete('/:id',auth, deleteBooking)
 

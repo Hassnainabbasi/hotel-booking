@@ -24,6 +24,7 @@ const bookingSchema = new mongoose.Schema(
     },
     confirm: {
       type: Boolean,
+      default: false,
       required: true,
     },
   },

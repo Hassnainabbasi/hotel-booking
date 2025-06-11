@@ -15,7 +15,7 @@ const createBooking = async (req, res, next) => {
 
 const getBooking = async (req, res, next) => {
   try {
-    const booker = await Booking.find();
+    const booker = await Booking.find().populate("roomId")
     if (!booker) {
       res.status(400);
       throw new Error("Booking are not available");
@@ -28,7 +28,7 @@ const getBooking = async (req, res, next) => {
 
 const singleUserBooking = async(req, res, next)=>{
     try{
-        const booker = await Booking.findById(req.params.id)
+        const booker = await Booking.findById(req.params.id).populate("roomId")
         if (!booker) {
           res.status(400);
           throw new Error("BookingId are not available");
