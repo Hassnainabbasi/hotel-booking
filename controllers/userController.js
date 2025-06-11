@@ -99,11 +99,11 @@ const loginUser = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SEC);
     res.cookie("jwt", token);
 
-    const { password : userPassword, ...rest} = user._doc
+    const { password: userPassword, ...rest } = user._doc;
     return res.status(200).json({
       ...rest,
-      token
-    })
+      token,
+    });
 
     console.log(token);
     return res.status(200).json(user);
@@ -115,7 +115,7 @@ const loginUser = async (req, res, next) => {
 const logoutUser = async (req, res, next) => {
   res.cookie("jwt", " ", { expiresIn: "-1" });
   return res.json({ message: "logout user" });
-};  
+};
 
 module.exports = {
   createUser,
@@ -124,5 +124,5 @@ module.exports = {
   updateUser,
   deleteUser,
   loginUser,
-  logoutUser
+  logoutUser,
 };
