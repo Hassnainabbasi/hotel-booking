@@ -13,7 +13,7 @@ const router = Router();
 router.post("/", createBooking);
 router.get("/", getBooking);
 router.get("/:id", singleUserBooking);
-router.put("/:id", auth, updateBooking);
-router.delete("/:id", auth, deleteBooking);
+router.put("/:id", updateBooking);
+router.delete("/:id", deleteBooking);
 
 module.exports = router;

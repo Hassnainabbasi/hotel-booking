@@ -11,7 +11,7 @@ const { auth } = require("../middleware/auth.js");
 const router = Router();
 
 router.get("/", getRooms);
-router.post("/", auth, createRoom);
+router.post("/", createRoom);
 router.get("/:id", singleRoom);
 router.put("/:id", updateRoom);
 router.delete("/:id", deletRooms);
