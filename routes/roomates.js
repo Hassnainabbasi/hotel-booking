@@ -13,7 +13,7 @@ const router = Router();
 router.get("/", getRooms);
 router.post("/", auth, createRoom);
 router.get("/:id", singleRoom);
-router.put("/:id", auth, updateRoom);
-router.delete("/:id", auth, deletRooms);
+router.put("/:id", updateRoom);
+router.delete("/:id", deletRooms);
 
 module.exports = router;
